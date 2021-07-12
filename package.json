@@ -1,0 +1,14 @@
+{
+  "name": "aws-timeout-test",
+  "version": "1.0.0",
+  "repository": "git@github.com:taschmidt/aws-timeout-test.git",
+  "author": "Tim Schmidt <tim@schmidthole.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.21.0"
+  },
+  "devDependencies": {
+    "serverless": "^2.51.2",
+    "serverless-esbuild": "^1.16.1"
+  }
+}

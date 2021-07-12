@@ -1,0 +1,36 @@
+service: aws-timeout-test
+
+useDotenv: true
+
+plugins:
+  - serverless-esbuild
+
+package:
+  excludeDevDependencies: true
+  individually: true
+
+provider:
+  name: aws
+  region: us-east-1
+  stage: ${opt:stage, 'nonprod'}
+  runtime: nodejs14.x
+  deploymentBucket:
+    blockPublicAccess: true
+  logRetentionInDays: 90
+  lambdaHashingVersion: 20201221
+  versionFunctions: false
+  memorySize: 512
+  timeout: 15
+  environment:
+    NODE_OPTIONS: --enable-source-maps
+    STAGE: ${self:provider.stage}
+
+custom:
+  esbuild:
+    logLevel: info
+    packager: yarn
+    sourcemap: true
+
+functions:
+  foo:
+    handler: src/foo.handler
